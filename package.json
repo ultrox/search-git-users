@@ -22,8 +22,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test:watch": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
+    "prettier": "prettier \"src/**/*.+(js|json)\"",
+    "prettier:diff": "npm run prettier -- --list-different",
+    "format": "npm run prettier -- --write",
+    "eject": "react-scripts eject",
+    "validate": "npm-run-all --parallel prettier:diff test:coverage lint"
   },
   "eslintConfig": {
     "extends": "react-app"
