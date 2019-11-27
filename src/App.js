@@ -1,11 +1,14 @@
 import React from 'react'
-import {GenericStyles, AppWrapper} from './styles'
+import {GenericStyles, AppWrapper, MainWrapper} from './styles'
+import GithubSearchUsers from './GithubSearchUsers'
 
 function App() {
   return (
     <AppWrapper>
       <GenericStyles />
-      <p>Hello Styled World!</p>
+      <MainWrapper>
+        <GithubSearchUsers />
+      </MainWrapper>
     </AppWrapper>
   )
 }

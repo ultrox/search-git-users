@@ -19,6 +19,6 @@ export * from './elements'
 // https://codepen.io/collection/DmzVOM/
 
 // 6. Components → Specific UI components, button, card, concrete-list
-
+export * from './components'
 // 7. Utilities → utils & helper classes with ability to override anything which
 // goes before in the triangle

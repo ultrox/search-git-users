@@ -23,4 +23,7 @@ ${normalize}
 	*, *::before, *::after {
 		box-sizing: inherit;
 	}
+  body {
+    background-color: #e4e4ec;
+  }
 `
