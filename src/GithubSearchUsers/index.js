@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   SearchStyle,
   DropDown,
@@ -11,10 +11,13 @@ import {
 const PLACEHOLDER = 'Search for users'
 
 function GithubSearchUsers() {
+  const [searchTerm, setSearchTerm] = useState('')
   return (
     <>
       <SearchStyle>
         <input
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
           type="search"
           spellCheck="false"
           autocapitalization="none"
