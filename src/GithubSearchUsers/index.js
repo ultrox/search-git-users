@@ -17,7 +17,7 @@ function GithubSearchUsers() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
-
+  const [loading, setLoading] = useState(false)
   // 1. Make custom hook
   // 2. Never send empty input
   // 3. provide loading, error & results hook
@@ -28,11 +28,20 @@ function GithubSearchUsers() {
   React.useEffect(() => {
     // make sure searchQuery exists
     if (debouncedQuery.length > 2) {
+      setError(null)
+      setLoading(true)
       getGithubUsers(debouncedQuery)
         .then(users => {
           setUsers(users.items)
+          setLoading(false)
         })
-        .catch(setError)
+        .catch(error => {
+          setError(error)
+          setLoading(false)
+          setUsers([])
+        })
+    } else {
+      setUsers([])
     }
   }, [debouncedQuery])
 
@@ -55,7 +64,13 @@ function GithubSearchUsers() {
           <DropDownItem>Something is Wrong</DropDownItem>
         </DropDown>
       )}
-      {!!users.length && (
+
+      {loading && (
+        <DropDown>
+          <DropDownTitle>Loading...</DropDownTitle>
+        </DropDown>
+      )}
+      {users.length !== 0 && (
         <DropDown>
           <DropDownTitle>Users</DropDownTitle>
           {users.map(user => {
