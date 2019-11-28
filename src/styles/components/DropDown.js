@@ -12,6 +12,7 @@ const DropDownItem = styled.a`
   align-items: center;
   padding: 1rem 1rem;
   text-decoration: none;
+  ${props => (props.highlighted ? 'background-color: #ebecf1' : '')}
   color: ${colors.gray[600]};
   &:hover {
     background-color: #ebecf1;

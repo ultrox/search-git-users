@@ -39,4 +39,18 @@ function getGithubUsers(q, per_page = 10) {
   return fetchFromGithub(genFetchUserQuery(q))
 }
 
-export {fetchFromGithub, getGithubUsers}
+/**
+ * Number Number → Number
+ */
+
+function keepInRange(n, max) {
+  if (n >= max) {
+    return max
+  }
+  if (n <= 0) {
+    return 0
+  }
+  return n
+}
+
+export {fetchFromGithub, getGithubUsers, keepInRange}

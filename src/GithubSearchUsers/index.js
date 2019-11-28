@@ -8,7 +8,7 @@ import {
   DropDownTitle,
 } from '../styles'
 
-import {getGithubUsers} from '../utils'
+import {getGithubUsers, keepInRange} from '../utils'
 import useDebouncer from './useDebounce'
 
 const PLACEHOLDER = 'Search for users'
@@ -20,12 +20,32 @@ function GithubSearchUsers() {
   const [error, setError] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(false)
+  const [activeUserIndex, setActiveUserIndex] = useState(-1)
   // 1. Make custom hook
   // 2. Never send empty input
   // 3. provide loading, error & results hook
   // 4. refactor to use Reducer
 
   const debouncedQuery = useDebouncer(searchQuery)
+
+  function handleKeyboardControles(e) {
+    const keyMap = {13: 'Enter', 40: 'DOWN', 38: 'UP'}
+    const maxRangeKeysGo = users.length - 1
+    // preventing anoying cursor movment when UP/DOWN
+    if (keyMap[e.keyCode]) {
+      e.preventDefault()
+    }
+    // down
+    if (e.keyCode === 40) {
+      const val = keepInRange(activeUserIndex + 1, maxRangeKeysGo)
+      setActiveUserIndex(val)
+    }
+    // down
+    if (e.keyCode === 38) {
+      const val = keepInRange(activeUserIndex - 1, maxRangeKeysGo)
+      setActiveUserIndex(val)
+    }
+  }
 
   React.useEffect(() => {
     // make sure searchQuery exists
@@ -52,6 +72,7 @@ function GithubSearchUsers() {
       <SearchStyle>
         <input
           value={searchQuery}
+          onKeyDown={e => handleKeyboardControles(e)}
           onChange={e => setSearchQuery(e.target.value)}
           type="search"
           spellCheck="false"
@@ -75,9 +96,10 @@ function GithubSearchUsers() {
       {users.length !== 0 && (
         <DropDown>
           <DropDownTitle>Users</DropDownTitle>
-          {users.map(user => {
+          {users.map((user, index) => {
             return (
               <DropDownItem
+                highlighted={index === activeUserIndex}
                 key={user.id}
                 target="_blank"
                 rel="noopener noreferrer"
