@@ -53,4 +53,12 @@ function keepInRange(n, max) {
   return n
 }
 
-export {fetchFromGithub, getGithubUsers, keepInRange}
+/**
+ * String → String
+ * given `username` returns properly formated github profile
+ */
+function genGitProfileUrl(username) {
+  return `https://github.com/${username}`
+}
+
+export {fetchFromGithub, getGithubUsers, keepInRange, genGitProfileUrl}

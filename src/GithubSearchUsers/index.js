@@ -8,7 +8,7 @@ import {
   DropDownTitle,
 } from '../styles'
 
-import {getGithubUsers, keepInRange} from '../utils'
+import {getGithubUsers, keepInRange, genGitProfileUrl} from '../utils'
 import useDebouncer from './useDebounce'
 
 const PLACEHOLDER = 'Search for users'
@@ -44,6 +44,10 @@ function GithubSearchUsers() {
     if (e.keyCode === 38) {
       const val = keepInRange(activeUserIndex - 1, maxRangeKeysGo)
       setActiveUserIndex(val)
+    }
+    if (e.keyCode === 13) {
+      const {login} = users[activeUserIndex]
+      window.location.href = genGitProfileUrl(login)
     }
   }
 
@@ -103,7 +107,7 @@ function GithubSearchUsers() {
                 key={user.id}
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://github.com/${user.login}`}
+                href={genGitProfileUrl(user.login)}
               >
                 <ItemAvatar src={user.avatar_url} />
                 <ItemUsername>{user.login}</ItemUsername>
