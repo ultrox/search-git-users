@@ -5,6 +5,7 @@ import {
   DropDownItem,
   ItemAvatar,
   ItemUsername,
+  DropDownTitle,
 } from '../styles'
 
 const PLACEHOLDER = 'Search for users'
@@ -23,6 +24,7 @@ function GithubSearchUsers() {
         />
       </SearchStyle>
       <DropDown>
+        <DropDownTitle>Users</DropDownTitle>
         <DropDownItem
           target="_blank"
           rel="noopener noreferrer"
