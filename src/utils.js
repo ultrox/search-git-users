@@ -1,5 +1,5 @@
 const {REACT_APP_GITHUB_TOKEN} = process.env
-
+const PER_PAGE = 8
 /**
  * String → Promise
  * asyncronously get data from github
@@ -28,7 +28,7 @@ function fetchFromGithub(endpoint) {
  * ASSUME: q must be login name of user
  */
 
-function getGithubUsers(q, per_page = 10) {
+function getGithubUsers(q, per_page = PER_PAGE) {
   function genFetchUserQuery(query) {
     const BASE_URL = 'https://api.github.com/search/users'
     const QUERY = `?q=${query}+in:login&type=User`
