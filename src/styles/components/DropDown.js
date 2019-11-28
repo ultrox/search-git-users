@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import {colors} from '../settings'
 
-export const DropDown = styled.div`
+const DropDown = styled.div`
   border-top: 1px solid #ebecf1;
   padding-top: 2rem;
 `
 
-export const DropDownItem = styled.div`
+const DropDownItem = styled.a`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@ export const DropDownItem = styled.div`
   }
 `
 
-export const ItemAvatar = styled.div`
+const ItemAvatar = styled.img`
   border-radius: 100%;
   border: 2px solid #ebecf1;
   width: 5rem;
@@ -26,7 +26,7 @@ export const ItemAvatar = styled.div`
   display: block;
 `
 
-export const ItemUsername = styled.div`
+const ItemUsername = styled.p`
   margin-left: 2rem;
   text-decoration: none;
 `
@@ -37,4 +37,4 @@ const DropDownTitle = styled.h2`
   font-size: 1.3rem;
   color: ${colors.gray['500']};
 `
-export {DropDownTitle}
+export {DropDownTitle, DropDown, DropDownItem, ItemAvatar, ItemUsername}
