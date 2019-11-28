@@ -105,8 +105,6 @@ function GithubSearchUsers() {
               <DropDownItem
                 highlighted={index === activeUserIndex}
                 key={user.id}
-                target="_blank"
-                rel="noopener noreferrer"
                 href={genGitProfileUrl(user.login)}
               >
                 <ItemAvatar src={user.avatar_url} />
