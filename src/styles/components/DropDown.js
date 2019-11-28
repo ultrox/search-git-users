@@ -35,6 +35,6 @@ const DropDownTitle = styled.h2`
   padding: 0 1rem 0.5rem;
   text-transform: uppercase;
   font-size: 1.3rem;
-  color: ${colors.gray['500']};
+  color: ${props => (props.error ? colors.red[500] : colors.gray[500])};
 `
 export {DropDownTitle, DropDown, DropDownItem, ItemAvatar, ItemUsername}

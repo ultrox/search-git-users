@@ -12,6 +12,8 @@ import {getGithubUsers} from '../utils'
 import useDebouncer from './useDebounce'
 
 const PLACEHOLDER = 'Search for users'
+const ERROR_MESSAGE = 'Please try again later!!'
+const LOADING_MESSAGE = 'Loading..'
 
 function GithubSearchUsers() {
   const [users, setUsers] = useState([])
@@ -61,13 +63,13 @@ function GithubSearchUsers() {
       </SearchStyle>
       {error && (
         <DropDown>
-          <DropDownItem>Something is Wrong</DropDownItem>
+          <DropDownItem error>{ERROR_MESSAGE}</DropDownItem>
         </DropDown>
       )}
 
       {loading && (
         <DropDown>
-          <DropDownTitle>Loading...</DropDownTitle>
+          <DropDownTitle>{LOADING_MESSAGE}</DropDownTitle>
         </DropDown>
       )}
       {users.length !== 0 && (
