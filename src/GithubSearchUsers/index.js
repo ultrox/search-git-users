@@ -59,12 +59,14 @@ function GithubSearchUsers() {
       getGithubUsers(debouncedQuery)
         .then(users => {
           setUsers(users.items)
-          setLoading(false)
         })
         .catch(error => {
           setError(error)
-          setLoading(false)
           setUsers([])
+          console.error(error)
+        })
+        .finally(() => {
+          setLoading(false)
         })
     } else {
       setUsers([])
