@@ -15,6 +15,14 @@ const PLACEHOLDER = 'Search for users'
 const ERROR_MESSAGE = 'Please try again later!!'
 const LOADING_MESSAGE = 'Loading..'
 
+/**
+ * Number String → Boolean
+ */
+
+function canShowDropdown(userLength, input) {
+  return userLength > 0 && input
+}
+
 function GithubSearchUsers() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState(null)
@@ -97,7 +105,7 @@ function GithubSearchUsers() {
           <DropDownTitle>{LOADING_MESSAGE}</DropDownTitle>
         </DropDown>
       )}
-      {users.length !== 0 && (
+      {canShowDropdown(users.length, searchQuery) && (
         <DropDown>
           <DropDownTitle>Users</DropDownTitle>
           {users.map((user, index) => {
