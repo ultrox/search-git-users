@@ -53,7 +53,7 @@ function GithubSearchUsers() {
 
   React.useEffect(() => {
     // make sure searchQuery exists
-    if (debouncedQuery.length > 2) {
+    if (debouncedQuery) {
       setError(null)
       setLoading(true)
       getGithubUsers(debouncedQuery)
@@ -68,8 +68,6 @@ function GithubSearchUsers() {
         .finally(() => {
           setLoading(false)
         })
-    } else {
-      setUsers([])
     }
   }, [debouncedQuery])
 
