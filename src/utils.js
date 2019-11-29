@@ -5,10 +5,12 @@ const PER_PAGE = 8
  * asyncronously get data from github
  */
 function fetchFromGithub(endpoint) {
-  if (!REACT_APP_GITHUB_TOKEN) {
-    throw new Error(`There is no GITHUB TOKEN!`)
-  }
+  const NO_TOKEN_ERR = 'There is no GITHUB TOKEN!'
+  const RESPONSE_NOT_OK = 'Fetching from Github faild!'
 
+  if (!REACT_APP_GITHUB_TOKEN) {
+    return Promise.reject(new Error(NO_TOKEN_ERR))
+  }
   return fetch(endpoint, {
     headers: {
       Authorization: `token ${REACT_APP_GITHUB_TOKEN}`,
@@ -17,7 +19,7 @@ function fetchFromGithub(endpoint) {
     if (response.ok) {
       return response.json()
     } else {
-      throw new Error(`Fetching from Github faild!`)
+      return Promise.reject(new Error(RESPONSE_NOT_OK))
     }
   })
 }
