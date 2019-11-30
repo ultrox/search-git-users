@@ -28,7 +28,7 @@ function GithubSearchUsers() {
   const [error, setError] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(false)
-  const [activeUserIndex, setActiveUserIndex] = useState(-1)
+  const [activeUserIndex, setActiveUserIndex] = useState(0)
 
   const inputRef = useRef()
   const debouncedQuery = useDebouncer(searchQuery)
@@ -51,8 +51,10 @@ function GithubSearchUsers() {
       setActiveUserIndex(val)
     }
     if (e.keyCode === 13) {
-      const {login} = users[activeUserIndex]
-      window.location.href = genGitProfileUrl(login)
+      if (users.length) {
+        const {login} = users[activeUserIndex]
+        window.location.href = genGitProfileUrl(login)
+      }
     }
   }
 
