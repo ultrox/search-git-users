@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {
   SearchStyle,
   DropDown,
@@ -29,11 +29,8 @@ function GithubSearchUsers() {
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(false)
   const [activeUserIndex, setActiveUserIndex] = useState(-1)
-  // 1. Make custom hook
-  // 2. Never send empty input
-  // 3. provide loading, error & results hook
-  // 4. refactor to use Reducer
 
+  const inputRef = useRef()
   const debouncedQuery = useDebouncer(searchQuery)
 
   function handleKeyboardControles(e) {
@@ -60,6 +57,10 @@ function GithubSearchUsers() {
   }
 
   React.useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+
+  React.useEffect(() => {
     // make sure searchQuery exists
     if (debouncedQuery) {
       setError(null)
@@ -83,6 +84,7 @@ function GithubSearchUsers() {
     <>
       <SearchStyle>
         <input
+          ref={inputRef}
           value={searchQuery}
           onKeyDown={e => handleKeyboardControles(e)}
           onChange={e => setSearchQuery(e.target.value)}
