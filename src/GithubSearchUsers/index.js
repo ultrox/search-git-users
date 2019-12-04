@@ -92,7 +92,7 @@ function GithubSearchUsers() {
           onChange={e => setSearchQuery(e.target.value)}
           type="search"
           spellCheck="false"
-          autocapitalization="none"
+          autoCapitalize="none"
           autoComplete="off"
           autoCorrect="off"
           placeholder={PLACEHOLDER}
