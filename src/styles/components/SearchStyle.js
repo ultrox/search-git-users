@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const SearchStyle = styled.div`
-  margin-top: 10rem;
   display: flex;
   alight-items: center;
   padding: 2rem;
