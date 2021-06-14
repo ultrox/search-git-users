@@ -4,23 +4,23 @@
   "private": true,
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0",
-    "styled-components": "^4.4.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^11.2.7",
     "babel-plugin-styled-components": "^1.10.6",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.5",
-    "husky": "^3.1.0",
-    "is-ci": "^2.0.0",
-    "lint-staged": "^9.5.0",
-    "netlify-cli": "^2.21.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "husky": "^6.0.0",
+    "is-ci": "^3.0.0",
+    "lint-staged": "^11.0.0",
+    "netlify-cli": "^3.37.25",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.19.1"
+    "prettier": "^2.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,7 +34,9 @@
     "format": "npm run prettier -- --write",
     "eject": "react-scripts eject",
     "validate": "npm-run-all --parallel prettier:diff test:coverage lint",
-    "gen:env": "node ./scripts/gen_env.js"
+    "gen:env": "node ./scripts/gen_env.js",
+    "check": "npx npm-check -u"
+
   },
   "eslintConfig": {
     "extends": "react-app"
