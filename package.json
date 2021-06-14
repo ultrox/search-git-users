@@ -33,7 +33,8 @@
     "prettier:diff": "npm run prettier -- --list-different",
     "format": "npm run prettier -- --write",
     "eject": "react-scripts eject",
-    "validate": "npm-run-all --parallel prettier:diff test:coverage lint"
+    "validate": "npm-run-all --parallel prettier:diff test:coverage lint",
+    "gen:env": "node ./scripts/gen_env.js"
   },
   "eslintConfig": {
     "extends": "react-app"

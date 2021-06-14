@@ -22,15 +22,9 @@ Deployed with netlify and circleci!
 
 Generate personal token [github tokens](https://github.com/settings/tokens`)
 
-Rename env file:
+Create env file:
 
-`env.development.example → .env.development`
-
-Paste the token to `env.development`
-
-```
-REACT_APP_GITHUB_TOKEN=<HERE TOKEN>
-```
+`yarn run gen:env <YOUR_TOKEN>`
 
 ## Deployment on Netlify with CircleCI:
 
